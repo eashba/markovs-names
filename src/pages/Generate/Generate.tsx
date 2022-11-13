@@ -1,15 +1,9 @@
+import React from "react";
 import { useState, useEffect } from "react";
-
-import { BrowserRouter as Router, Route, Routes, useParams } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 import Foswig from "foswig";
-
-// import aztec from "../../names/aztec.json";
-// import english from "../../names/english.json";
-
 import Nametable from "./components/NameTable";
 import SettingsTable from "./components/SettingsTable";
-
 import { NameGroup, getGroupByName } from "../../names/name-groups";
 
 export interface ChainSettings {
@@ -43,23 +37,17 @@ const buildDataset = (nameGroup: NameGroup, settings: ChainSettings) => {
     if (settings.useMale) {
         namesArray.push(...nameGroup.male);
     }
-
     return namesArray;
 };
 
 function Generate() {
     const { groupName } = useParams();
-
     const [generatedNames, setGeneratedNames] = useState<Array<string>>([]);
-
     const [currentChain, setCurrentChain] = useState<Foswig | undefined>();
     const [currentSurnameChain, setCurrentSurnameChain] = useState<Foswig | undefined>();
-
     const [currentNameGroup, setCurrentNameGroup] = useState<NameGroup | undefined>();
-
     const [currentDataset, setCurrentDataset] = useState<Array<string>>([]);
     const [currentSurnameDataset, setCurrentSurnameDataset] = useState<Array<string>>([]);
-
     const [chainSettings, setChainSettings] = useState<ChainSettings>(defaultChainSettings);
     const [error, setError] = useState<string>();
 
@@ -84,7 +72,6 @@ function Generate() {
     useEffect(() => {
         if (groupName) {
             const nameGroup = getGroupByName(groupName);
-
             if (nameGroup) {
                 const chain = createChain(nameGroup, chainSettings);
                 if (nameGroup.family.length > 0) {
@@ -108,7 +95,6 @@ function Generate() {
             if (currentChain) {
                 for (let i = 0; i < chainSettings.quantity; i++) {
                     const name: string = currentChain.generate(chainSettings.constraints);
-
                     if (currentSurnameChain && chainSettings.generateSurnames) {
                         const surname: string = currentSurnameChain.generate(chainSettings.constraints);
                         const fullname = currentNameGroup?.surnameFirst ? `${surname} ${name}` : `${name} ${surname}`;
@@ -118,11 +104,9 @@ function Generate() {
                     }
                 }
                 setGeneratedNames(names);
-            } else {
-                console.log("Nop chains");
             }
         } catch (err) {
-            setError("Error: Unable to generate names with the given constraints.");
+            setError("ERROR: Unable to generate names with the given constraints.");
         }
     };
 

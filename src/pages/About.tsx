@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
+import React from "react";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 function About() {
@@ -45,11 +46,18 @@ function About() {
                         , which is no longer in print. Datasets are simple JSON files, so this project's generators can
                         be easily extended by adding more. Custom datasets are on the todo list.
                     </p>
+
+                    <p className="text-2xl mt-10 mb-2 font-semibold">Tech Stack</p>
+                    <p>
+                        The tech stack for this project includes: Typescript • React • Vite • Tailwind CSS • DaisyUI •
+                        Vercel
+                    </p>
+
                     <p className="text-2xl mt-10 mb-2 font-semibold">Usage</p>
                     <p>
                         This is a free and open source project, provided under the MIT license. Source code is avalable{" "}
                         <a
-                            href="https://github.com/"
+                            href="https://github.com/eashba/markovs-names"
                             target="_blank"
                             className="link link-primary link-hover font-bold"
                         >

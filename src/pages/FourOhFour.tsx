@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
+import React from "react";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 function FourOhFour() {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ function FourOhFour() {
                 </div>
                 <div onClick={goToIndex}>
                     <button className="btn btn-outline btn-primary">Take me back to the names!</button>
-                </div>{" "}
+                </div>
             </div>
         </div>
     );

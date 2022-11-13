@@ -1,3 +1,4 @@
+import React from "react";
 import { NameGroup, nameGroups } from "../names/name-groups";
 import { Link } from "react-router-dom";
 
@@ -19,6 +20,7 @@ function Home() {
                         </div>
                     );
                 })}
+                <p className="mt-5">More coming soon...</p>
             </div>
         </div>
     );

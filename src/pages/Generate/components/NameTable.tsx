@@ -1,4 +1,11 @@
-function Nametable({ names }) {
+import React from "react";
+
+interface ComponentProps {
+    names: Array<string>;
+}
+
+function Nametable(props: ComponentProps) {
+    const { names } = props;
     return (
         <div className="overflow-x-auto overflow-y-auto md:min-w-[300px] min-w-full">
             <table className="table w-full table-compact table-zebra ">
@@ -8,14 +15,6 @@ function Nametable({ names }) {
                             <tr className="group" key={idx}>
                                 <th>{idx + 1}</th>
                                 <td>{name}</td>
-                                {/* <td>
-                                    <div className="rating ">
-                                        <input
-                                            type="radio "
-                                            className="mask mask-star bg-white radio-sm  group-hover:bg-gray-200"
-                                        />
-                                    </div>
-                                </td> */}
                             </tr>
                         );
                     })}
