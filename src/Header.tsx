@@ -7,6 +7,7 @@ function Header() {
     const goToIndex = useCallback(() => navigate("/", { replace: true }), [navigate]);
     const goToAbout = useCallback(() => navigate("/about", { replace: true }), [navigate]);
 
+    
     return (
         <div className="navbar bg-base-100 justify-between align-middle">
             <div onClick={goToIndex}>
